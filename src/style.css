@@ -1,0 +1,204 @@
+html {
+  font-family: "Dosis", sans-serif;
+}
+body {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url("./images/rm245-bb-62.jpg");
+  /* background-position:top bottom ; */
+  background-size: 98em 46em;
+  background-repeat: no-repeat;
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 2em;
+}
+
+.home > h1 {
+  margin-bottom: 0;
+}
+
+.home .welcome--quiz--button {
+  border: none;
+  width: 12em;
+  height: 3em;
+  font-size: 0.7em;
+  border-radius: 0.5em;
+  background-color: #0077b6;
+  cursor: pointer;
+}
+
+.home .welcome--quiz--button:active {
+  box-shadow: inset 2px 2px 2px 2px black, 2px 2px 2px 2px black;
+}
+.home .welcome--quiz--button:hover {
+  background-color: crimson;
+}
+.home .home--heading {
+  color: #8338ec;
+  margin-top: 0;
+}
+.home .home--heading2 {
+  color: #a34dff;
+}
+.quiz {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 50em;
+  min-height: 15em;
+  padding: 2em;
+  padding-bottom: 1em;
+  background-color: #dbdef0;
+  background: rgba(218, 211, 211, 0.6);
+  backdrop-filter: saturate(180%) blur(10px);
+}
+
+.quiz h1 {
+  font-weight: 500;
+  color: #293264;
+  font-size: large;
+}
+
+.quiz--ques {
+  margin: 5em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding-bottom: 2em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.323);
+  width: 40em;
+  height: 5em;
+}
+
+.btn {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.btn > button {
+  width: 8em;
+  height: 3em;
+  border: none;
+  border-radius: 2em;
+  border: 2px solid #4d5b9e;
+}
+
+.check-btn {
+  min-width: 9em;
+  height: 4em;
+  border: none;
+  background-color: #4d5b9e;
+  color: hsla(0, 0%, 100%, 0.841);
+  box-shadow: 2px 2px 2px #4d5b9e;
+  border-radius: 2em;
+  align-self: center;
+}
+
+.quiz-wrapper {
+  display: block;
+}
+
+.quiz--button {
+  transition: all 0.3s;
+}
+
+.quiz--button:hover {
+  background-color: #4d5b9e;
+  transform: scale(1.2, 1.2);
+}
+
+.quiz--button:active {
+  transform: scale(1, 1);
+}
+
+.check-btn {
+  transition: all 0.3s;
+}
+
+.check-btn:hover {
+  background-color: #4d5b9e;
+  transform: scale(1.2, 1.2);
+}
+
+.check-btn:active {
+  transform: scale(1, 1);
+}
+
+.quiz--button--selected {
+  background-color: #fea802;
+  transition: all 0.3s;
+}
+
+.quiz--button--selected:hover {
+  background-color: #fea802;
+  transform: scale(1.2, 1.2);
+}
+.quiz--button--selected:active {
+  transform: scale(1, 1);
+}
+.quiz--button--selected--correct {
+  background-color: #02c39a;
+  transition: all 0.3s;
+}
+
+.quiz--button--selected--correct:hover {
+  background-color: #02c39a;
+  transform: scale(1.2, 1.2);
+}
+.quiz--button--selected--correct:active {
+  transform: scale(1, 1);
+}
+.quiz--button--selected--incorrect {
+  background-color: #e63946;
+  transition: all 0.3s;
+}
+
+.quiz--button--selected--incorrect:hover {
+  background-color: #e63946;
+  transform: scale(1.2, 1.2);
+}
+.quiz--button--selected--incorrect:active {
+  transform: scale(1, 1);
+}
+
+button:disabled {
+  color: #585252;
+}
+.CheckButtons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+.reset-btn {
+  transition: all 0.3s;
+}
+
+.reset-btn:hover {
+  background-color: #4d5b9e;
+  transform: scale(1.2, 1.2);
+}
+
+.reset-btn:active {
+  transform: scale(1, 1);
+}
+.reset-btn {
+  min-width: 9em;
+  height: 4em;
+  border: none;
+  background-color: #4d5b9e;
+  color: hsla(0, 0%, 100%, 0.841);
+  box-shadow: 2px 2px 2px #4d5b9e;
+  border-radius: 2em;
+  align-self: center;
+}
