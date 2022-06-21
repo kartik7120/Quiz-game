@@ -60,6 +60,7 @@ function Quiz(props) {
                 key: nanoid(),
               };
             });
+            console.log("Value of arr in React.useEffect = ", arr);
             setState(arr);
           });
       } catch (error) {
@@ -96,8 +97,9 @@ function Quiz(props) {
     buttons.pop();
     let numberCorrectAnswers = 0;
     let c = 0;
+    correctAnswers = correctAnswers.slice(correctAnswers.length - 4);
     buttons.map((buttonDiv) => {
-      console.log("ButtonDiv = ", buttonDiv);
+      // console.log("ButtonDiv = ", buttonDiv);
       const buttonDivChildren = buttonDiv.childNodes;
       for (let i = 0; i < buttonDivChildren.length; i++) {
         const button = buttonDivChildren[i];
@@ -132,6 +134,7 @@ function Quiz(props) {
       {state && (
         <div className="quiz">
           {state.map((obj) => {
+            console.log("Obj = ", obj);
             let options = obj.incorrect_answers; // array of all the options for a question
             let correctAnswer = obj.correct_answer;
             correctAnswers.push(decodeHTMLText(correctAnswer));
