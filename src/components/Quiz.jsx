@@ -45,7 +45,7 @@ let correctAnswers = []; // global array for checking answers
 function Quiz(props) {
   const [state, setState] = React.useState(null); // state for the data of the quiz
   const [btnState, setBtnState] = React.useState(false); // state for each button in the quiz
-
+  const [errorState, setErrorState] = React.useState(null);
   React.useEffect(
     function () {
       try {
@@ -62,12 +62,14 @@ function Quiz(props) {
             });
             console.log("Value of arr in React.useEffect = ", arr);
             setState(arr);
+            setErrorState(null);
           })
           .catch((err) => {
             console.log(
               "Something went wrong while fetching from React.useEffect = ",
               err
             );
+            setErrorState(err);
           });
       } catch (error) {
         console.log(
@@ -81,10 +83,11 @@ function Quiz(props) {
 
   function handleClick(e) {
     const checkButton = document.querySelector(".check-btn");
-    checkButton.disabled = false;
+    if (!errorState) checkButton.disabled = false;
     setBtnState(function (oldState) {
       return !oldState;
     });
+    setErrorState(null);
   }
 
   function CheckAnswer(e) {
@@ -135,40 +138,47 @@ function Quiz(props) {
     }
   }
 
-  return (
-    <>
-      {state && (
-        <div className="quiz">
-          {state.map((obj) => {
-            console.log("Obj = ", obj);
-            let options = obj.incorrect_answers; // array of all the options for a question
-            let correctAnswer = obj.correct_answer;
-            correctAnswers.push(decodeHTMLText(correctAnswer));
-            options.push(correctAnswer);
-            let newOptions = options.map((option) => {
-              return decodeHTMLText(option);
-            });
-            const question = decodeHTMLText(obj.question);
-            const shuffledOptionsArray = shuffle(newOptions);
-            return (
-              <QuizBox2
-                question={question}
-                setBtnState={setBtnState}
-                btnState={btnState}
-                key={nanoid()}
-                componentId={obj.key}
-                state={state}
-                options={shuffledOptionsArray}
-              />
-            );
-          })}
-          <div className="CheckButtons">
-            <ResetButton handleClick={handleClick} />
-            <CheckButton CheckAnswer={CheckAnswer} />
+  if (errorState) {
+    return (
+      <div className="quiz" style={{ textAlign: "center", fontSize: "1.5em" }}>
+        Error occured while fetching data from the server
+        <ResetButton handleClick={handleClick} textContent="Reset" />
+      </div>
+    );
+  } else
+    return (
+      <>
+        {state && (
+          <div className="quiz">
+            {state.map((obj) => {
+              let options = obj.incorrect_answers; // array of all the options for a question
+              let correctAnswer = obj.correct_answer;
+              correctAnswers.push(decodeHTMLText(correctAnswer));
+              options.push(correctAnswer);
+              let newOptions = options.map((option) => {
+                return decodeHTMLText(option);
+              });
+              const question = decodeHTMLText(obj.question);
+              const shuffledOptionsArray = shuffle(newOptions);
+              return (
+                <QuizBox2
+                  question={question}
+                  setBtnState={setBtnState}
+                  btnState={btnState}
+                  key={nanoid()}
+                  componentId={obj.key}
+                  state={state}
+                  options={shuffledOptionsArray}
+                />
+              );
+            })}
+            <div className="CheckButtons">
+              <ResetButton handleClick={handleClick} textContent="New Game" />
+              <CheckButton CheckAnswer={CheckAnswer} />
+            </div>
           </div>
-        </div>
-      )}
-    </>
-  );
+        )}
+      </>
+    );
 }
 export default Quiz;
