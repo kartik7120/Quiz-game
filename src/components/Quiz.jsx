@@ -47,10 +47,11 @@ function Quiz(props) {
   const [btnState, setBtnState] = React.useState(false); // state for each button in the quiz
   const [errorState, setErrorState] = React.useState(null);
   React.useEffect(
-    function () {
+    function() {
       try {
         fetch(
-          "https://opentdb.com/api.php?amount=4&category=31&difficulty=easy&type=multiple"
+          "https://opentdb.com/api.php?amount=4&category=31&difficulty=easy&type=multiple",
+          { mode: "cors" }
         )
           .then((JSON) => JSON.json())
           .then((data) => {
@@ -60,22 +61,21 @@ function Quiz(props) {
                 key: nanoid(),
               };
             });
-            console.log("Value of arr in React.useEffect = ", arr);
             setState(arr);
-            setErrorState(null);
           })
           .catch((err) => {
-            console.log(
-              "Something went wrong while fetching from React.useEffect = ",
-              err
-            );
+            const displaySpan = document.querySelector(".displayScore");
+            if (displaySpan) {
+              displaySpan.remove();
+            }
             setErrorState(err);
           });
       } catch (error) {
-        console.log(
-          "Something went wrong while fetching from React.useEffect = ",
-          error
-        );
+        const displaySpan = document.querySelector(".displayScore");
+        if (displaySpan) {
+          displaySpan.remove();
+        }
+        setErrorState(error);
       }
     },
     [btnState]
@@ -84,7 +84,7 @@ function Quiz(props) {
   function handleClick(e) {
     const checkButton = document.querySelector(".check-btn");
     if (!errorState) checkButton.disabled = false;
-    setBtnState(function (oldState) {
+    setBtnState(function(oldState) {
       return !oldState;
     });
     setErrorState(null);
@@ -140,7 +140,7 @@ function Quiz(props) {
 
   if (errorState) {
     return (
-      <div className="quiz" style={{ textAlign: "center", fontSize: "1.5em" }}>
+      <div className="quiz1" style={{ textAlign: "center", fontSize: "1.5em" }}>
         Error occured while fetching data from the server
         <ResetButton handleClick={handleClick} textContent="Reset" />
       </div>
