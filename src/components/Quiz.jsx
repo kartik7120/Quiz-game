@@ -48,19 +48,26 @@ function Quiz(props) {
 
   React.useEffect(
     function () {
-      fetch(
-        "https://opentdb.com/api.php?amount=4&category=31&difficulty=easy&type=multiple"
-      )
-        .then((JSON) => JSON.json())
-        .then((data) => {
-          const arr = data.results.map((ele) => {
-            return {
-              ...ele,
-              key: nanoid(),
-            };
+      try {
+        fetch(
+          "https://opentdb.com/api.php?amount=4&category=31&difficulty=easy&type=multiple"
+        )
+          .then((JSON) => JSON.json())
+          .then((data) => {
+            const arr = data.results.map((ele) => {
+              return {
+                ...ele,
+                key: nanoid(),
+              };
+            });
+            setState(arr);
           });
-          setState(arr);
-        });
+      } catch (error) {
+        console.log(
+          "Something went wrong while fetching from React.useEffect = ",
+          error
+        );
+      }
     },
     [btnState]
   );
