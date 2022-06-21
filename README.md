@@ -3,4 +3,4 @@ A simple quiz trivia app made in React using [Open Trivia Database](https://open
 
  - Where a user will 4 multiple choice questions and After hitting Check Answer button , total score will be displayed
  - User can start a new game by hitting New Game button
-  Link to the [Quiz Trivia App](https://helpful-crepe-0bc22c.netlify.app)
+  Link to the [Quiz Trivia App](https://main--helpful-crepe-0bc22c.netlify.app/)
