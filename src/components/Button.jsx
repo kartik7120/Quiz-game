@@ -22,31 +22,3 @@ function Button(props) {
   );
 }
 export default Button;
-// {currBtnState &&
-//   currBtnState.map((ele) => {
-//     return (
-//       <button
-//         type="button"
-//         className="quiz--button"
-//         onClick={props.handleClick}
-//         id={ele.id}
-//         key={ele.id}
-//       >
-//         {ele.option}
-//       </button>
-//     );
-//   })}
-
-// let currBtnState;
-// if (props.btnState) {
-//   const btnState = props.btnState;
-//   const componentId = props.componentId;
-//   console.log("btnstate = ", btnState);
-//   btnState.map((ele) => {
-//     let length = ele.length;
-//     if (ele[length - 1] === componentId) {
-//       currBtnState = ele;
-//     }
-//     return -1;
-//   });
-// }
