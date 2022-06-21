@@ -62,6 +62,12 @@ function Quiz(props) {
             });
             console.log("Value of arr in React.useEffect = ", arr);
             setState(arr);
+          })
+          .catch((err) => {
+            console.log(
+              "Something went wrong while fetching from React.useEffect = ",
+              err
+            );
           });
       } catch (error) {
         console.log(
