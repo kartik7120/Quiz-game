@@ -1,5 +1,6 @@
 // import logo from "./logo.svg";
 import "./App.css";
+import React from "react";
 import Welcome from "./components/Welcome";
 import "./style.css";
 // import Quiz from "./components/Quiz";

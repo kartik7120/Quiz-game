@@ -1,4 +1,5 @@
 // import { nanoid } from "nanoid";
+import React from "react";
 import QuizHeading from "./QuizQuestion";
 import Button from "./Button";
 function QuizBox(props) {
